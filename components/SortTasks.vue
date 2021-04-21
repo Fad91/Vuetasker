@@ -10,7 +10,6 @@
 <script>
 
 export default {
-  props: ["tasks"],
 
   data() {
     return {
@@ -21,7 +20,7 @@ export default {
 
   methods: {
     onChange() {
-      this.$store.commit('changePriority', this.selectedPriority)
+      this.$store.commit('CHANGE_PRIORITY', this.selectedPriority)
     },
   },
   computed: {

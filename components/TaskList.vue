@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import TaskItem from "@/components/TaskItem";
+import TaskItem from "./TaskItem";
 
 export default {
 

@@ -1,35 +1,37 @@
 <template>
-  <div id="app">
+  <div id="tasker">
     <h1>Tasker</h1>
     <hr />
     <addTask />
     <sortTasks />
     <taskList />
+    <router-link to="/form">Go to form</router-link>
   </div>
+  
 </template>
 
 <script>
-import TaskList from "@/components/TaskList";
-import addTask from "@/components/AddTask";
-import sortTasks from "@/components/SortTasks";
+import TaskList from "../components/TaskList";
+import addTask from "../components/AddTask";
+import sortTasks from "../components/SortTasks";
 
 export default {
-  name: "App",
+  name: "Tasker",
   computed: {
   },
   methods: {
   },
 
-  components: {
+components: {
     TaskList,
     addTask,
     sortTasks,
-  },
-};
+  }
+}
 </script>
 
-<style>
-#app {
+<style scoped>
+#tasker {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -20,7 +20,7 @@
     </div>
     <transition name="show">
       <div class="show-description" v-if="show">
-        <textarea rows="10" placeholder="Опишите поподробнее вашу задачу">
+        <textarea rows="10" placeholder="Опишите поподробнее вашу задачу" v-model="description">
         </textarea>
       </div>
     </transition>
@@ -33,6 +33,7 @@ export default {
     return {
       show: false,
       hint: "Кликните для подробного описания вашей задачи",
+      description: ''
     };
   },
   props: {
