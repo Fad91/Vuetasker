@@ -1,22 +1,29 @@
 <template>
   <div id="app">
+    <component :is='layout'>
     <MainPage/>
+    </component>
   </div>
 </template>
 
 <script>
 import MainPage from "../pages/MainPage"
+import Taskerlayout from "../layouts/Taskerlayout"
+import Formlayout from "../layouts/Formlayout"
 
 export default {
   name: "App",
-  computed: {
-  },
   methods: {
   },
 
   components: {
-    MainPage
-  }
+    MainPage, Taskerlayout, Formlayout
+  },
+  computed: {
+    layout() {
+      return this.$route.meta.layout + "layout";
+    }
+  } 
 };
 </script>
 
@@ -24,7 +31,7 @@ export default {
   #app {
  
   width: 100%;
-  height: auto;
+  height: 100%;
  
 } 
 

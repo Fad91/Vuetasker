@@ -5,9 +5,10 @@
     <addTask />
     <sortTasks />
     <taskList />
-    <router-link to="/form">Go to form</router-link>
+    <router-link to="/form" class="link">
+      <span>Go to form</span>
+    </router-link>
   </div>
-  
 </template>
 
 <script>
@@ -17,17 +18,15 @@ import sortTasks from "../components/SortTasks";
 
 export default {
   name: "Tasker",
-  computed: {
-  },
-  methods: {
-  },
+  computed: {},
+  methods: {},
 
-components: {
+  components: {
     TaskList,
     addTask,
     sortTasks,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -38,7 +37,7 @@ components: {
   text-align: center;
   color: #2c3e50;
   width: 800px;
-  margin: 20px auto;
+  margin: 0 auto;
   border: 1px solid brown;
   border-radius: 20px;
   font-size: 20px;
@@ -48,5 +47,15 @@ components: {
 
 hr {
   background-color: brown;
+}
+
+.link {
+  color: #2c3e50;
+  font-size: 25px;
+  text-decoration: none;
+  border: 1px solid brown;
+  padding: 2px;
+  margin: 10px;
+  display: inline-block;
 }
 </style>

@@ -35,7 +35,7 @@
         </fieldset>
         <fieldset class="contacts">
           <legend>Контактные данные</legend>
-          <ValidationProvider rules="email" v-slot="{ errors }">
+          <ValidationProvider rules="required|email" v-slot="{ errors }">
             <label for="email">
               <span>Email</span>
               <input
@@ -56,6 +56,7 @@
         <button type="reset" @click="onReset">Сброс</button>
       </form>
     </ValidationObserver>
+    <router-link to="/tasker" class="link">Go to tasker</router-link>
   </div>
 </template>
 
@@ -97,7 +98,7 @@
 import { extend } from "vee-validate";
 
 extend ('required', required => {
-  if(!required) {
+  if(required != true) {
     return "Обязательное поле, друг"
   }
 })
@@ -177,10 +178,10 @@ legend {
   /* color: transparent;
   background-clip: text;
   background-image: linear-gradient(to bottom, black 35%, white 55%); */
-  color: black;
+  color:  #2c3e50;;
   font-size: 25px;
   font-weight: bold;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 input {
@@ -206,5 +207,19 @@ button {
 
 button:hover {
   color: rgb(84, 146, 175);
+}
+
+button:disabled {
+  color: transparent;
+}
+
+.link {
+  color: #2c3e50;
+  font-size: 25px;
+  text-decoration: none;
+  border: 1px solid brown;
+  padding: 2px;
+  margin: 10px;
+  display: inline-block;
 }
 </style>
