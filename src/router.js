@@ -4,6 +4,7 @@ import Form from "/pages/Form";
 import Tasker from "/pages/Tasker";
 import MainPage from "/pages/MainPage";
 import Cherry from "/pages/Cherry";
+import Tictactoe from "/pages/TicTacToe";
 
 Vue.use(Router);
 
@@ -26,6 +27,12 @@ const routes = [
   {
     path: "/cherry",
     component: Cherry,
+    meta: { layout: "form" }
+  },
+  {
+    path: "/tictactoe",
+    component: Tictactoe,
+    meta: { layout: "form" }
   },
 ];
 

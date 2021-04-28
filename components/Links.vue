@@ -4,6 +4,7 @@
       <router-link to="/tasker">Go to tasker</router-link>
       <router-link to="/form">Go to form</router-link>
       <router-link to="/cherry">Special for Cherry</router-link>
+      <router-link to="/tictactoe">Tic Tac Toe</router-link>
       <router-view></router-view>
     </nav>
   </div>
