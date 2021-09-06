@@ -5,6 +5,7 @@ import Tasker from "/pages/Tasker";
 import MainPage from "/pages/MainPage";
 import Cherry from "/pages/Cherry";
 import Tictactoe from "/pages/TicTacToe";
+import AudioMessages from "/pages/AudioMessages";
 
 Vue.use(Router);
 
@@ -34,6 +35,11 @@ const routes = [
     component: Tictactoe,
     meta: { layout: "form" }
   },
+  {
+    path: "/audio",
+    component: AudioMessages,
+    meta: { layout: "tasker" }
+  }
 ];
 
 export default new Router({

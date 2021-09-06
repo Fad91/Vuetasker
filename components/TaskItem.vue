@@ -13,7 +13,7 @@
         >{{ task.title }}
       </span>
     </p>
-    <div class="buttons">
+    <div class="task-buttons">
       <button @click="setTaskDone">Done</button>
       <button @click="setTaskUndone">Undone</button>
       <button @click="removeTask">Delete</button>
@@ -73,29 +73,46 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px solid black;
+  box-shadow: 2px 2px 5px 3px rgba(20, 153, 2, 0.096);;
+  border-radius: 32px;
 }
 
 .priority-high {
-  color: brown;
+  color: #6a7d91;
+ text-shadow:2px 1px 1px rgba(85, 85, 85, 0.253);
 }
 
 .priority-low {
-  color: green;
+  color:  #999a9b;
 }
 
-.buttons {
+.task-buttons {
   display: flex;
+  margin: 0;
 }
 
 button {
-  background-color: brown;
-  color: white;
-  margin-right: 5px;
+  font-weight: bold;
+  background-color: rgba(235, 252, 233, 0.3);
+  border: none;
+  color: #6a7d91;
+  margin-right: 10px;
+  box-shadow: 2px 2px 5px 1px rgba(143, 142, 142, 0.212),
+  -1px 0 1px 2px rgba(143, 142, 142, 0.1);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+}
+
+button:active {
+  box-shadow: none;
+  border: 1px solid rgba(158, 158, 158, 0.3);
 }
 
 button:last-child {
   margin-right: 0;
+  margin-bottom:0;
 }
 
 .done {

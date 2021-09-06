@@ -42,7 +42,10 @@ select {
   font-size: 20px;
   width: 70px;
   height: 40px;
-  border-color: brown;
+  border-color: rgba(20, 153, 2, 0.1);
+  border-radius: 10px;
+  box-shadow: -2px 2px 5px 2px rgba(202, 202, 202, 0.075),2px -2px 8px 1px rgba(112, 112, 112, 0.075);
+  color: #6a7d91;
 }
 
 option {

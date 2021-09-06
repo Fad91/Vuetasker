@@ -1,7 +1,7 @@
 <template>
   <div id="tasker">
-    <h1>Tasker</h1>
-    <hr />
+    <h1 class="tasker-title">Tasker</h1>
+    <hr class="decorate-stripe"/>
     <addTask />
     <sortTasks />
     <taskList />
@@ -35,27 +35,37 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #6a7d91;
   width: 800px;
   margin: 0 auto;
-  border: 1px solid brown;
+  border: 1px solid rgba(20, 153, 2, 0.3);
   border-radius: 20px;
   font-size: 20px;
   background-color: white;
-  box-shadow: 0px 0px 20px 5px brown;
+  box-shadow: 1px 1px 10px 1px rgb(206, 205, 205);
 }
 
-hr {
-  background-color: brown;
+.tasker-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+.decorate-stripe {
+  border-color: rgba(20, 153, 2, 0.2);
+  margin: 20px 0;
 }
 
 .link {
-  color: #2c3e50;
+  color: inherit;
   font-size: 25px;
   text-decoration: none;
-  border: 1px solid brown;
-  padding: 2px;
+  border: 1px solid rgba(20, 153, 2, 0.103);
+  box-shadow: -3px -3px 6px -1px rgba(165, 165, 165, 0.164),
+   5px 5px 5px -3px rgba(78, 78, 78, 0.164);
+  padding: 10px;
   margin: 10px;
   display: inline-block;
+  border-radius: 32px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="form">
-    <h1>Регистрация</h1>
+    <h1 class="form-title">Регистрация</h1>
     <ValidationObserver v-slot="{ handleSubmit, reset, invalid }">
       <form
         @submit.prevent="handleSubmit(onSubmit)"
@@ -8,7 +8,11 @@
       >
         <fieldset class="login">
           <legend>Основная информация</legend>
-          <ValidationProvider rules="required|max:10" v-slot="{ errors }">
+          <ValidationProvider
+            name="Login"
+            rules="required|max:10"
+            v-slot="{ errors }"
+          >
             <label for="login">
               <span>Ваш логин</span>
               <input
@@ -20,7 +24,11 @@
             </label>
             <span class="error-message">{{ errors[0] }}</span>
           </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
+          <ValidationProvider
+            name="Password"
+            rules="required"
+            v-slot="{ errors }"
+          >
             <label for="password">
               <span>Пароль</span>
               <input
@@ -35,7 +43,11 @@
         </fieldset>
         <fieldset class="contacts">
           <legend>Контактные данные</legend>
-          <ValidationProvider rules="required|email" v-slot="{ errors }">
+          <ValidationProvider
+            name="Email"
+            rules="required|email"
+            v-slot="{ errors }"
+          >
             <label for="email">
               <span>Email</span>
               <input
@@ -49,7 +61,13 @@
           </ValidationProvider>
           <label for="tel">
             <span>Телефон</span>
-            <input type="tel" name="tel" id="tel" v-model="formData.tel" />
+            <input
+              type="tel"
+              name="tel"
+              id="tel"
+              v-model="formData.tel"
+              icon-left="check"
+            />
           </label>
         </fieldset>
         <button type="submit" :disabled="invalid">Отправить</button>
@@ -61,49 +79,16 @@
 </template>
 
 <script>
-// import { email } from 'vee-validate/dist/rules';
-// import { extend } from "vee-validate";
-// :disabled="invalid"
-// extend(
-//   // "correctLength", value => {
-//   //   if (value.length <= 10) {
-//   //     return true
-//   //     }
-//   //   return "Имя должно состоять из 10 символов максимум, приятель"
-//   // }
-//   "correctLength",
-//   {
-//     validate(value) {
-//       if (value.length > 0 && value.length <= 10) {
-//         return {
-//           required: true,
-//           valid: true,
-//         };
-//       }
-//       return {
-//         valid: false
-//       }
-//     },
-//     computesRequired: true,
-//   }
-// );
-
-// extend('email', email => {
-// if(email) {
-//   return true
-// }
-// return "1"
-// })
-
-import { extend } from "vee-validate";
-
-extend ('required', required => {
-  if(required != true) {
-    return "Обязательное поле, друг"
-  }
-})
+import { ValidationObserver, ValidationProvider } from "vee-validate";
+// import { mdiCheckCircleOutline } from "@mdi/js";
 
 export default {
+  name: "Form",
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
+
   data() {
     return {
       formData: {
@@ -117,13 +102,21 @@ export default {
 
   methods: {
     onSubmit() {
-      alert("Form has been submitted!");
+      this.$buefy.dialog.alert({
+        title: "Радуйся, приятель!",
+        message: "Форма отправлена!",
+        type: "is-success",
+      });
+      const reload = function() {
+        location.reload();
+      };
+      setTimeout(reload, 5000);
     },
     onReset() {
-      this.formData.login = "",
-        this.formData.email = "",
-        this.formData.password = "",
-        this.formData.tel = ""
+      (this.formData.login = ""),
+        (this.formData.email = ""),
+        (this.formData.password = ""),
+        (this.formData.tel = "");
     },
     onInputChange(evt) {
       this.login = evt.target.value;
@@ -135,20 +128,26 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  scoped>
 #form {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #b38014;
   width: 800px;
   margin: 20px auto;
-  border: 1px solid brown;
+  border: 1px solid rgba(71, 71, 71, 0.596);
   border-radius: 20px;
   font-size: 20px;
-  background-color: white;
-  box-shadow: 0px 0px 20px 5px brown;
+  background-color: rgb(41, 40, 40);
+  box-shadow: 1px 0px 20px 5px rgb(39, 39, 39);
+}
+
+.form-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 20px;
 }
 
 label {
@@ -168,26 +167,40 @@ fieldset {
   padding: 0;
   margin: 0;
   text-align: left;
-  background-color: brown;
-  color: white;
-  border-color: brown;
+  background-color: rgba(43, 41, 41, 0.308);
+  color: #b38014;
+  border-color: rgba(46, 44, 44, 0.493);
   border-radius: 5px;
+  box-shadow: 3px 2px 10px 2px rgba(27, 26, 26, 0.26);
 }
 
 legend {
   /* color: transparent;
   background-clip: text;
   background-image: linear-gradient(to bottom, black 35%, white 55%); */
-  color:  #2c3e50;;
+  color: #b38014;
   font-size: 25px;
   font-weight: bold;
-  padding-bottom: 30px;
 }
 
 input {
-  margin: 0 10px;
+  margin: 0 11px;
   padding: 0;
+  background-color: rgba(43, 41, 41, 0.308);
+  border: 1px solid rgba(43, 42, 42, 0.493);
+  box-shadow: -3px -5px 8px -5px rgba(59, 59, 59, 0.63),
+    3px 3px 4px 0 rgba(0, 0, 0, 0.26);
+    color: #b38014;
 }
+
+/* .text-input {
+  margin: 0 11px;
+  padding: 0;
+  background-color: rgba(43, 41, 41, 0.308);
+  border: 1px solid rgba(43, 42, 42, 0.493);
+  box-shadow: -3px -5px 8px -5px rgba(59, 59, 59, 0.63),
+    3px 3px 4px 0 rgba(0, 0, 0, 0.26);
+} */
 
 .error-message {
   display: block;
@@ -200,13 +213,16 @@ button {
   margin: 20px;
   padding: 10px 0;
   font-size: 15px;
-  background-color: brown;
-  color: white;
+  background-color: rgba(43, 41, 41, 0.308);
+  color: #b38014;
   font-weight: bold;
+  border: 1px solid rgba(43, 42, 42, 0.493);
+  box-shadow: -3px -5px 8px -5px rgba(59, 59, 59, 0.63),
+    3px 3px 4px 0 rgba(0, 0, 0, 0.26);
 }
 
 button:hover {
-  color: rgb(84, 146, 175);
+  box-shadow: 0 0 15px 5px #b38014 inset;
 }
 
 button:disabled {
@@ -214,12 +230,18 @@ button:disabled {
 }
 
 .link {
-  color: #2c3e50;
+  color: #8b630c;
   font-size: 25px;
   text-decoration: none;
-  border: 1px solid brown;
-  padding: 2px;
+  border: 1px solid rgba(44, 44, 44, 0.466);
+  box-shadow: 5px 2px 8px 2px rgba(0, 0, 0, 0.26);
+  border-radius: 30px;
+  padding: 15px;
   margin: 10px;
   display: inline-block;
+}
+
+.link:hover {
+  box-shadow: 0 0 15px 5px #b38014 inset;
 }
 </style>
