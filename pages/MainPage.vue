@@ -1,21 +1,21 @@
 <template>
-    <div>
-       <Links/> 
-    </div>
+  <div>
+    <Links />
+  </div>
 </template>
 
 <script>
-
-import Links from "../components/Links"
+import Links from "../components/Links";
 
 export default {
-    components: {
-        Links
-    }
-}
+  components: {
+    Links,
+  },
+};
 </script>
 
 <style scoped>
-
-</style>>
-    
+div {
+  padding: 50px 0;
+}
+</style>

@@ -20,15 +20,6 @@
     rgb(211, 211, 211) 90%
   );
   padding: 30px 0;
+  min-height: 100vh;
 }
 </style>
-
-
-linear-gradient(
-    to bottom,
-    rgb(104, 32, 32) 0%,
-    rgb(92, 44, 44) 25%,
-    rgb(100, 47, 47) 40%,
-    rgb(95, 47, 47) 55%,
-    rgb(104, 32, 32) 90%
-  );

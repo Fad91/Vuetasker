@@ -45,10 +45,30 @@ export default {
   box-shadow: 1px 1px 10px 1px rgb(206, 205, 205);
 }
 
+@media (max-width: 1023px) {
+  #tasker {
+  width: 500px;
+  };
+}
+
+@media (max-width: 767px) {
+  #tasker {
+  width: 320px;
+  }
+}
+
 .tasker-title {
   font-size: 40px;
   font-weight: bold;
   margin: 20px;
+}
+
+@media (max-width: 1023px) {
+  .tasker-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px;
+  }
 }
 
 .decorate-stripe {

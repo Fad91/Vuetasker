@@ -11,14 +11,20 @@
               </ValidationProvider>
               <button type="submit" :disabled="invalid">Отправить</button>
           </form>
-          <p class="visually-hidden">ПИДОР ТЫ, {{name}}</p>
+          <p class="visually-hidden">Ты няшка, {{name}}</p>
       </ValidationObserver>
     </div>
 </template>
 
 
 <script>
+import { ValidationObserver, ValidationProvider } from "vee-validate";
 export default {
+    name: "Cherry",
+    components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
     data() {
         return {
             name: ""
@@ -28,10 +34,8 @@ export default {
         onSubmit() {
             let p = document.querySelector('p');
             let f = document.querySelector('form')
-            let d = document.querySelector('.cherry')
             f.classList.add('visually-hidden')
             p.classList.remove('visually-hidden')
-            d.style.backgroundImage = "url(../img/flag.png)"
         }
     },
 }
